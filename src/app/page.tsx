@@ -1,113 +1,122 @@
-import Image from 'next/image'
+"use client";
+import React, { useState } from 'react';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+interface Task {
+  id: number;
+  title: string;
+  quantityOrWeight: string;
+  image: string | null;
 }
+
+const TodoList: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [newTask, setNewTask] = useState<Task>({
+    id: 1,
+    title: '',
+    quantityOrWeight: '',
+    image: null,
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setNewTask({
+      ...newTask,
+      [name]: value,
+    });
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setNewTask({
+          ...newTask,
+          image: reader.result as string,
+        });
+      };
+    }
+  };
+
+  const addTask = () => {
+    if (newTask.title.trim() !== '') {
+      setTasks([...tasks, newTask]);
+      setNewTask({
+        id: newTask.id + 1,
+        title: '',
+        quantityOrWeight: '',
+        image: null,
+      });
+    }
+  };
+
+  const removeTask = (taskId: number) => {
+    const updatedTasks = tasks.filter(task => task.id !== taskId);
+    setTasks(updatedTasks);
+  };
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  return (
+      <div className="container mx-auto w-96">
+        <div className="bg-gray-100 px-4 pt-0.5 pb-0.5 mt-4 rounded-md">
+          <ul>
+            {tasks.map((task) => (
+                <li key={task.id} className="relative hover:bg-gray-200 p-4 rounded-md bg-gray-50 shadow-sm flex my-2 border-b-2 border-solid border-gray-200 pb-4">
+                  <div>
+                    {task.image && <img className="object-cover h-16 w-16 rounded-full mr-4 border-solid border-2 border-gray-100" src={task.image} alt={task.title} />}
+                  </div>
+                  <div>
+                    <h3 className="text-2xl text-pink-400">{task.title}</h3>
+                    <p className="text-sm text-gray-600">Cantidad: {task.quantityOrWeight}</p>
+                    <button onClick={() => removeTask(task.id)} className="text-sm text-pink-600 mt-2 absolute top-0 right-2 bg-gray-200 px-2 rounded-full hover:bg-gray-800">x</button>
+                  </div>
+                </li>
+            ))}
+          </ul>
+        </div>
+        <button className="w-full bg-yellow-500 mb-2 rounded-b-md px-2 text-white text-2xl hover:bg-gray-800 hover:text-pink-400" onClick={toggleVisibility}>+</button>
+        {isVisible &&
+            <div className="p-4 pt-6 text-center w-11/12 bg-gray-100 border-gray-200 border-solid border-2 h-60 rounded-lg mx-4">
+              <div>
+                <input
+                    className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                    type="text"
+                    name="title"
+                    placeholder="Nuevo producto"
+                    value={newTask.title}
+                    onChange={handleInputChange}
+                />
+                <br />
+                <input
+                    className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+                    type="text"
+                    name="quantityOrWeight"
+                    placeholder="Cantidad o Peso"
+                    value={newTask.quantityOrWeight}
+                    onChange={handleInputChange}
+                />
+                <br />
+                <input
+                    className="cursor-pointer ml-3 mb-4 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange} />
+                <br />
+                <button onClick={addTask}
+                        className="bg-yellow-500 hover:bg-gray-900 text-white hover:text-pink-500 py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:text-pink-500">
+                  Agregar
+                </button>
+              </div>
+            </div>
+        }
+      </div>
+  );
+};
+
+export default TodoList;
